@@ -1,4 +1,4 @@
-public class User {
+public abstract class User {
     private int id;
     private String name;
 
@@ -7,18 +7,10 @@ public class User {
         this.name = name;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public int getId() {
-        return id;
-    }
-    public String getName() {
-        return name;
-    }
+    public abstract void display();
+
+    public int getId() { return id; }
+    public String getName() { return name; }
 
     @Override
     public String toString() {
@@ -33,10 +25,8 @@ public class User {
         return id == user.id && name.equals(user.name);
     }
 
-    // Override hashCode()
     @Override
     public int hashCode() {
         return id * name.hashCode();
     }
-
 }

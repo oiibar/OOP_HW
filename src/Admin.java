@@ -3,6 +3,11 @@ public class Admin extends User {
         super(id, name);
     }
 
+    @Override
+    public void display() {
+        System.out.println("Admin details: " + this);
+    }
+
     public void addQuestion(Question question) {
         System.out.println("Question added: " + question);
     }

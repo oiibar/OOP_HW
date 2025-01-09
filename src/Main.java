@@ -6,20 +6,25 @@ public class Main {
     public static void main(String[] args) {
         List<User> users = getUsers();
         users.forEach(User::display);
+
+
+        //Sorting
         List<Candidate> sortedCandidates = users.stream()
                 .filter(user -> user instanceof Candidate)
                 .map(user -> (Candidate) user)
                 .sorted(Comparator.comparingInt(Candidate::getScore).reversed())
                 .toList();
-
         System.out.println("\nSorted candidates: " + sortedCandidates);
 
+
+        //Filtering
         List<Candidate> passedCandidates = sortedCandidates.stream()
                 .filter(candidate -> candidate.getScore() >= 70)
                 .toList();
-
         System.out.println("Passed candidates: " + passedCandidates);
 
+
+        //Searching
         int searchId = 1111;
         Candidate failedStudent = findCandidateById(users, searchId);
         System.out.println(failedStudent != null ? "\nFailed candidate: " + failedStudent : "Candidate not found");
